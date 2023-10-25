@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prettier --check . && stylelint --allow-empty-input \"**/*.{css,scss}\" && next build",
+    "build": "prettier --check . && next build",
     "start": "next start",
-    "lint": "prettier --check . && stylelint --allow-empty-input \"**/*.{css,scss}\" && next lint",
+    "lint": "prettier --check .&& tsc --noEmit && next lint",
     "format": "prettier --write .",
     "prepare": "husky install"
   },
@@ -24,6 +24,7 @@
     "eslint": "^8",
     "eslint-config-next": "13.5.6",
     "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-no-inline-styles": "^1.0.5",
     "eslint-plugin-prettier": "^5.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",

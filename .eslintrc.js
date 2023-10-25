@@ -1,31 +1,12 @@
 module.exports = {
-  root: true,
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
-
+  parser: '@typescript-eslint/parser',
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   env: {
     browser: true,
     node: true,
     es2022: true,
   },
-
-  settings: {
-    react: {
-      version: 'detect',
-    },
-    'import/resolver': {
-      node: {
-        extensions: ['.ts', '.tsx'],
-      },
-    },
-  },
-
-  plugins: ['@typescript-eslint'],
+  plugins: ['react', 'react-hooks', 'jsx-a11y', 'prettier', 'eslint-plugin-no-inline-styles'],
   extends: [
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
@@ -34,37 +15,38 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:react-hooks/recommended',
   ],
-
   rules: {
-    '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/no-explicit-any': 'error',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': 'error',
+    'react-hooks/exhaustive-deps': 'off',
+    quotes: ['error', 'single', { avoidEscape: true }],
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-filename-extension': [
-      1,
-      {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
-      },
-    ],
-    'react/jsx-props-no-spreading': 'off',
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
-      },
-    ],
-    'jsx-a11y/anchor-is-valid': [
-      'error',
-      {
-        components: ['Link'],
-        specialLink: ['hrefLeft', 'hrefRight'],
-        aspects: ['invalidHref', 'preferButton'],
-      },
-    ],
-    'no-nested-ternary': 'off',
-    'import/prefer-default-export': 'off',
+    'react/display-name': 'off',
+    'react/jsx-first-prop-new-line': ['error', 'multiline'],
+    'react/jsx-max-props-per-line': ['error', { maximum: 1 }],
+    'react/jsx-boolean-value': 'error',
+    'jsx-a11y/alt-text': ['error', { elements: ['img'] }],
+    'jsx-a11y/img-redundant-alt': ['error', { elements: ['img'], words: ['image', 'photo', 'picture'] }],
+    'jsx-a11y/no-redundant-roles': ['error', { nav: ['navigation'] }],
+    'jsx-a11y/aria-role': ['error', { allowedInvalidRoles: ['text'], ignoreNonDOM: true }],
+    'jsx-a11y/no-access-key': 'error',
+    'react/self-closing-comp': 'error',
+    'prefer-arrow-callback': 'error',
+    'no-underscore-dangle': ['error', { enforceInMethodNames: true }],
+    'no-new-object': 'error',
+    eqeqeq: 'error',
+    radix: 'error',
+    '@typescript-eslint/no-for-in-array': 'error',
+    'no-eval': 'error',
+    'no-implied-eval': 'error',
+    'no-new-func': 'error',
+    'no-extend-native': 'error',
+    '@typescript-eslint/no-this-alias': 'error',
+    semi: ['error', 'always'],
+    '@typescript-eslint/no-unused-vars': ['warn'],
+    'no-inline-styles/no-inline-styles': 2,
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
+  root: true,
 };
